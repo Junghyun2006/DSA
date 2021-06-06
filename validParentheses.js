@@ -35,7 +35,7 @@ var isValid = function(s) {
 // second solution;
 
 var isValid = function(s) {
-    if (s.length % 2 !== 0) return false;
+    // if (s.length % 2 !== 0) return false;
     
     let hash = {
         '{' : '}',
@@ -43,9 +43,6 @@ var isValid = function(s) {
         '(' : ')'}
     
     let left = ['{', '[', '('];
-    let right = ['}', ']', ')'];
-    
-    let toggle;
     
     let leftHolder = [];
     
@@ -63,3 +60,25 @@ var isValid = function(s) {
     return false;
 };
 
+
+// solution 
+
+var isValid = function(s) {   
+    const stack = [];
+    const map = {
+      '(': ')',
+      '[': ']',
+      '{': '}'
+    }
+    
+    for (let i = 0 ; i < s.length ; i++) {
+        let c = s[i];
+        if (map[c]) {
+          stack.push(map[c])
+        } else if (c !== stack.pop()) {
+          return false;
+        } 
+    }
+    
+    return !stack.length;
+};
