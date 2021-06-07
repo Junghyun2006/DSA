@@ -9,6 +9,7 @@ var maxSubArray = function(nums) {
         
         for (let j = i+1; j < nums.length; j++) {
             counter += nums[j];
+            if (counter < 0) break;
             if (counter >= largestSum) {
                 largestSum = counter;
             } 
